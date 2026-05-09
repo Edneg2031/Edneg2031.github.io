@@ -1,0 +1,1005 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>roadmap | Hexo</title><meta name="author" content="Edneg2031"><meta name="copyright" content="Edneg2031"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="多模态大模型学习 RoadmapExecutive Summary这份 Roadmap 采用一条尽量稳、尽量少走弯路的主线：先把图像为什么能被 patchify 讲清楚，再理解图文对齐和视觉接入 LLM 的方式，最后回到 urlQwen-VL 系列官方资源turn2search1 &#x2F; urlQwen2-VL 论文turn3search5 &#x2F; urlQwen2.5-VL 技术报告">
+<meta property="og:type" content="article">
+<meta property="og:title" content="roadmap">
+<meta property="og:url" content="http://example.com/2026/05/09/roadmap/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="多模态大模型学习 RoadmapExecutive Summary这份 Roadmap 采用一条尽量稳、尽量少走弯路的主线：先把图像为什么能被 patchify 讲清楚，再理解图文对齐和视觉接入 LLM 的方式，最后回到 urlQwen-VL 系列官方资源turn2search1 &#x2F; urlQwen2-VL 论文turn3search5 &#x2F; urlQwen2.5-VL 技术报告">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/butterfly-icon.png">
+<meta property="article:published_time" content="2026-05-09T08:08:38.000Z">
+<meta property="article:modified_time" content="2026-05-09T08:08:57.046Z">
+<meta property="article:author" content="Edneg2031">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "roadmap",
+  "url": "http://example.com/2026/05/09/roadmap/",
+  "image": "http://example.com/img/butterfly-icon.png",
+  "datePublished": "2026-05-09T08:08:38.000Z",
+  "dateModified": "2026-05-09T08:08:57.046Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Edneg2031",
+      "url": "http://example.com"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2026/05/09/roadmap/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'roadmap',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.1"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/ba_momoi.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Hexo</span></a><a class="nav-page-title" href="/"><span class="site-name">roadmap</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">roadmap</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-05-09T08:08:38.000Z" title="Created 2026-05-09 16:08:38">2026-05-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-05-09T08:08:57.046Z" title="Updated 2026-05-09 16:08:57">2026-05-09</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="多模态大模型学习-Roadmap"><a href="#多模态大模型学习-Roadmap" class="headerlink" title="多模态大模型学习 Roadmap"></a>多模态大模型学习 Roadmap</h1><h2 id="Executive-Summary"><a href="#Executive-Summary" class="headerlink" title="Executive Summary"></a>Executive Summary</h2><p>这份 Roadmap 采用一条尽量稳、尽量少走弯路的主线：先把图像为什么能被 patchify 讲清楚，再理解图文对齐和视觉接入 LLM 的方式，最后回到 urlQwen-VL 系列官方资源turn2search1 / urlQwen2-VL 论文turn3search5 / urlQwen2.5-VL 技术报告turn1search1 做系统精读与本地实践。这个顺序与当前开源视觉语言模型的技术演进基本一致：urlViT 论文turn0search0 解决“图像如何变 token”，urlDiT 论文turn0search1 把 Transformer 推进到扩散模型，urlCLIP 论文turn0search2 解决“图文如何对齐”，urlBLIP-2 论文turn0search3 和 urlLLaVA 论文turn1search0 则展示了视觉特征如何高效接入 LLM。citeturn8view0turn8view1turn0search2turn9view1turn8view4turn9view2turn3search1</p>
+<p>按你给定的投入强度，每周 10–15 小时、连续 12 周，是足够走完“论文读懂 + 小实验 + Hexo 系列笔记 + 一个可放简历的小项目”这一闭环的；真正需要避免的不是时间不够，而是过早分散到 RL、Agent、分布式、Serving 全栈，结果每个方向都只停留在关键词级别。官方中文/官方教程体系里，最适合作为骨架的是 urlQwen 中文文档turn4search2、urlQwen 快速开始turn6search3、urlCommunity Computer Vision Courseturn1search6、urlVLM 入门课程turn1search18、urlSmol Course 的 VLM 单元turn11search4，以及来自 entity[“organization”,”Stanford University”,”Stanford, CA, USA”] 的 urlCS231n 课程与讲义turn1search7。citeturn12view0turn12view1turn9view7turn12view6turn1search7turn18search0turn18search7turn18search8</p>
+<p>对 3060 笔记本而言，最重要的策略不是“硬跑 7B/72B 全流程”，而是把“完整训练”降级为“量化推理 + 小样本比较 + 微型 SFT/LoRA”；官方的 urlQwen2-VL-7B TRL recipeturn15search2 明确提示这是 resource-intensive 并需要 A100，而 urlSmolVLM consumer GPU recipeturn15search1、urlSmolVLM-256M-Instructturn19search2 和 urlSmolVLM2-2.2B-Instructturn19search1 更适合作为本地微调与 sanity check 起点。量化层面，urlTransformers Quantization 文档turn6search18 和 urlbitsandbytes 文档turn6search10 提供了 4-bit/8-bit 的正式路径。citeturn15search2turn15search1turn19search2turn19search1turn6search18turn6search10</p>
+<h2 id="路线设计原则"><a href="#路线设计原则" class="headerlink" title="路线设计原则"></a>路线设计原则</h2><p>把学习主线压成“patchify → alignment → bridge → instruction tuning → Qwen-VL 演进 → 轻量实践/评测”，比直接“泛学多模态”更稳妥。原因是：ViT 把图像直接视为 patch token 序列；DiT 延续 patch 思路到 latent diffusion；CLIP 让图像和文本进入共享语义空间；BLIP-2 用 Q-Former 把冻结视觉编码器和冻结 LLM 连接起来；LLaVA 则把视觉接入方式和 instruction tuning 结合起来；到 Qwen2-VL / Qwen2.5-VL，这条链路又扩展到了动态分辨率、视频、文档解析和 grounding。citeturn8view0turn8view1turn0search2turn9view1turn8view4turn9view2turn3search1</p>
+<p>下面两张示意图，是你整个 12 周里最该反复重画、反复解释的两张图。能把它们讲清楚，说明你已经真正进入主线，而不是停留在“知道模型名字”的层面。citeturn24search1turn8view1turn9view7turn9view1turn8view4turn3search1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">flowchart LR</span><br><span class="line">    A[输入图像 H×W×C] --&gt; B[切成 P×P patches]</span><br><span class="line">    B --&gt; C[得到 N = HW / P² 个 patch]</span><br><span class="line">    C --&gt; D[每个 patch 展平]</span><br><span class="line">    D --&gt; E[线性投影为 patch embedding]</span><br><span class="line">    E --&gt; F[加入位置编码]</span><br><span class="line">    F --&gt; G[Transformer Encoder]</span><br><span class="line">    G --&gt; H[CLS / 全局图像表示]</span><br></pre></td></tr></table></figure>
+<p>ViT 的关键信息其实非常凝练：图像被切成固定大小 patch，patch 被当成 token 序列送入纯 Transformer；官方论文和文档都强调这一步是 Vision Transformer 的核心入口。citeturn8view0turn24search1turn18search2</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">flowchart LR</span><br><span class="line">    I[图像 / 视频 / 文档] --&gt; V[Vision Encoder&lt;br/&gt;ViT / CLIP / SigLIP]</span><br><span class="line">    V --&gt; P[Projector / Q-Former / Resampler]</span><br><span class="line">    T[文本提示] --&gt; E[Tokenizer + Text Embedding]</span><br><span class="line">    P --&gt; L[LLM]</span><br><span class="line">    E --&gt; L</span><br><span class="line">    L --&gt; O[回答 / OCR / Grounding / JSON / Tool Use]</span><br></pre></td></tr></table></figure>
+<p>VLM 的通用结构也同样清晰：视觉编码器先产生视觉 token，再通过 projector 或 Q-Former 之类的桥接层把视觉特征送入语言模型。urlVLM 入门课程turn1search18 把这件事讲得很系统；urlBLIP-2 论文turn0search3 给出 Q-Former 两阶段预训练；urlLLaVA 论文turn1search0 展示 visual instruction tuning；urlQwen2.5-VL 技术报告turn1search1 则把这一框架进一步扩展到了 grounding、文档、视频与 visual agent。citeturn9view7turn9view1turn8view4turn3search1</p>
+<p>这份路线默认你每周可稳定投入 10–15 小时。建议每周的配比固定为“阅读 5–6 小时 + 画图/整理 2–3 小时 + 代码实验 3–4 小时 + Hexo 笔记 2 小时”，这样就能同时保住理解深度和可执行性。你的终点不是“看完论文”，而是满足四个标准：能白板解释两张核心图、能跑通至少两个本地 demo、能做出一个带误差分析的小项目、能把整个过程写成一组可检索的 Hexo 文章。citeturn12view6turn12view7turn12view1turn8view6turn8view7</p>
+<h2 id="关键资源总表"><a href="#关键资源总表" class="headerlink" title="关键资源总表"></a>关键资源总表</h2><p>下表把主线资源、工程资源和中文补充资源放在一起，优先级含义为：<strong>P0 = 主线必读</strong>，<strong>P1 = 强实践/工程补充</strong>，<strong>P2 = 中文辅助/扩展阅读</strong>。资源优先使用原始论文、官方文档、官方仓库、官方课程；中文网页书风格资源被明确放在补充位，而不是替代原始来源。citeturn1search6turn12view0turn17search0turn7search0turn16view2</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>链接</th>
+<th>语言</th>
+<th>优先级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ViT 论文</td>
+<td>原始论文</td>
+<td>urlAn Image is Worth 16x16 Wordsturn0search0</td>
+<td>EN</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>ViT 文档</td>
+<td>官方文档</td>
+<td>urlTransformers ViT 文档turn24search1</td>
+<td>EN</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>ViT 官方代码</td>
+<td>官方仓库</td>
+<td>urlvision_transformer 仓库turn20search2</td>
+<td>EN</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>DiT 论文</td>
+<td>原始论文</td>
+<td>urlScalable Diffusion Models with Transformersturn0search1</td>
+<td>EN</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>DiT 官方代码</td>
+<td>官方仓库</td>
+<td>urlDiT 仓库turn20search3</td>
+<td>EN</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>Diffusion 入门课程</td>
+<td>官方课程</td>
+<td>urlDiffusion Models Courseturn11search10</td>
+<td>EN</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>CLIP 论文</td>
+<td>原始论文</td>
+<td>urlCLIP 论文turn0search2</td>
+<td>EN</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>CLIP 官方代码</td>
+<td>官方仓库</td>
+<td>urlOpenAI CLIP 仓库turn20search1</td>
+<td>EN</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>CLIP 教程</td>
+<td>官方课程</td>
+<td>urlCLIP and Relativesturn11search1</td>
+<td>EN</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>BLIP-2 论文</td>
+<td>原始论文</td>
+<td>urlBLIP-2 论文turn0search3</td>
+<td>EN</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>BLIP-2 文档</td>
+<td>官方文档</td>
+<td>urlTransformers BLIP-2 文档turn24search0</td>
+<td>EN</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>BLIP-2 官方库</td>
+<td>官方仓库</td>
+<td>urlLAVIS 仓库turn20search0</td>
+<td>EN</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>LLaVA 论文</td>
+<td>原始论文</td>
+<td>urlVisual Instruction Tuningturn1search0</td>
+<td>EN</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>LLaVA 项目页</td>
+<td>官方项目页</td>
+<td>urlLLaVA 项目页turn21search2</td>
+<td>EN</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>LLaVA 官方仓库</td>
+<td>官方仓库</td>
+<td>urlLLaVA 仓库turn21search0</td>
+<td>EN</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>Qwen-VL 论文</td>
+<td>原始论文</td>
+<td>urlQwen-VL 论文turn3search0</td>
+<td>EN</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>Qwen-VL 仓库</td>
+<td>官方仓库</td>
+<td>urlQwen-VL 官方仓库turn2search1</td>
+<td>中英混合</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>Qwen2-VL 论文</td>
+<td>原始论文</td>
+<td>urlQwen2-VL 论文turn3search5</td>
+<td>EN</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>Qwen2-VL 博客</td>
+<td>官方博客</td>
+<td>urlQwen2-VL 官方博客turn13search2</td>
+<td>EN</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>Qwen2-VL 文档</td>
+<td>官方文档</td>
+<td>urlTransformers Qwen2-VL 文档turn13search0</td>
+<td>EN</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>Qwen2-VL-2B 模型卡</td>
+<td>官方模型卡</td>
+<td>urlQwen2-VL-2B-Instructturn10search0</td>
+<td>EN</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>Qwen2.5-VL 技术报告</td>
+<td>原始论文</td>
+<td>urlQwen2.5-VL Technical Reportturn1search1</td>
+<td>EN</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>Qwen2.5-VL 官方博客</td>
+<td>官方博客</td>
+<td>urlQwen2.5-VL Blogturn2search0</td>
+<td>EN</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>Qwen2.5-VL 文档</td>
+<td>官方文档</td>
+<td>urlTransformers Qwen2.5-VL 文档turn2search2</td>
+<td>EN</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>Qwen2.5-VL-3B 模型卡</td>
+<td>官方模型卡</td>
+<td>urlQwen2.5-VL-3B-Instructturn10search1</td>
+<td>EN</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>VLM 入门课程</td>
+<td>官方课程</td>
+<td>urlIntroduction to Vision Language Modelsturn1search18</td>
+<td>EN</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>多模态单元总览</td>
+<td>官方课程</td>
+<td>urlComputer Vision Course Unit 4turn1search6</td>
+<td>EN</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>Smol VLM 单元</td>
+<td>官方课程</td>
+<td>urlSmol Course VLM Unitturn11search4</td>
+<td>EN</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>CS231n 课程主页</td>
+<td>官方课程</td>
+<td>urlCS231n 课程主页turn1search7</td>
+<td>EN</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>CS231n Transformer 讲义</td>
+<td>官方课件</td>
+<td>urlLecture 8 Attention and Transformersturn18search0</td>
+<td>EN</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>CS231n DiT 讲义</td>
+<td>官方课件</td>
+<td>urlLecture 14 Generative Models Part 2turn18search7</td>
+<td>EN</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>CS231n 多模态讲义</td>
+<td>官方课件</td>
+<td>urlLecture 16 Multi-Modal Foundation Modelsturn18search8</td>
+<td>EN</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>LoRA 论文</td>
+<td>原始论文</td>
+<td>urlLoRA 论文turn22search0</td>
+<td>EN</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>LoRA 文档</td>
+<td>官方文档</td>
+<td>urlPEFT LoRA 文档turn22search1</td>
+<td>EN</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>量化文档</td>
+<td>官方文档</td>
+<td>urlTransformers Quantization 文档turn6search18</td>
+<td>EN</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>bitsandbytes 文档</td>
+<td>官方文档</td>
+<td>urlbitsandbytes 文档turn6search10</td>
+<td>EN</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>LLaMA-Factory 文档</td>
+<td>官方文档</td>
+<td>urlLLaMA-Factory 文档turn6search0</td>
+<td>EN</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>ms-swift 文档</td>
+<td>官方文档</td>
+<td>urlms-swift 文档turn5search4</td>
+<td>EN</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>VLMEvalKit</td>
+<td>官方仓库</td>
+<td>urlVLMEvalKit 仓库turn5search2</td>
+<td>中英混合</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>OpenCompass</td>
+<td>官方仓库</td>
+<td>urlOpenCompass 仓库turn22search2</td>
+<td>中英混合</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>Qwen 中文文档</td>
+<td>官方文档</td>
+<td>urlQwen 中文文档turn4search2</td>
+<td>中文</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>Qwen 快速开始</td>
+<td>官方文档</td>
+<td>urlQwen 快速开始turn6search3</td>
+<td>中文</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>GPU Glossary 中文版</td>
+<td>中文网页书</td>
+<td>urlGPU Glossary 中文版turn17search0</td>
+<td>中文</td>
+<td>P2</td>
+</tr>
+<tr>
+<td>Base LLM 中文教程</td>
+<td>中文网页书</td>
+<td>urlDatawhale Base LLMturn7search0</td>
+<td>中文</td>
+<td>P2</td>
+</tr>
+<tr>
+<td>AIInfra DAPO 文档</td>
+<td>中文网页书</td>
+<td>urlAIInfra DAPO 页面turn16view2</td>
+<td>中文</td>
+<td>P2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="阶段资源与优先级"><a href="#阶段资源与优先级" class="headerlink" title="阶段资源与优先级"></a>阶段资源与优先级</h2><p>从“读论文”变成“真正学会”，关键不是资源更多，而是每个阶段只抓一个核心问题。下面这张阶段表，把主线分成五段，并给出难度和单阶段建议耗时。难度是为你这种“中文写作、以项目实践为目标、设备偏消费级”的学习场景估的，不是论文本身的学术难度排名。citeturn8view0turn8view1turn9view0turn9view1turn8view4turn3search1turn12view3turn8view7</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>核心问题</th>
+<th>优先级资源</th>
+<th>难度</th>
+<th>建议耗时</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>视觉 token 化</td>
+<td>图像为什么能像文本一样成为 token</td>
+<td>P0：urlViT 论文turn0search0；P1：urlViT 文档turn24search1；P1：urlCS231n Transformer 讲义turn18search0</td>
+<td>中</td>
+<td>12–15 小时</td>
+</tr>
+<tr>
+<td>扩散 Transformer 化</td>
+<td>DiT 为什么不是“另一个 ViT”，而是 latent diffusion 的 Transformer 主干</td>
+<td>P0：urlDiT 论文turn0search1；P1：urlDiffusion Models Courseturn11search10；P1：urlCS231n DiT 讲义turn18search7</td>
+<td>中偏上</td>
+<td>10–12 小时</td>
+</tr>
+<tr>
+<td>图文对齐与桥接</td>
+<td>图像和文本如何进入同一空间，又如何接入 LLM</td>
+<td>P0：urlCLIP 论文turn0search2；P0：urlBLIP-2 论文turn0search3；P1：urlCLIP and Relativesturn11search1；P1：urlBLIP-2 文档turn24search0</td>
+<td>中偏上</td>
+<td>15–18 小时</td>
+</tr>
+<tr>
+<td>视觉接入 LLM</td>
+<td>instruction tuning 如何改变多模态模型行为</td>
+<td>P0：urlLLaVA 论文turn1search0；P1：urlLLaVA 项目页turn21search2；P1：urlVLM 入门课程turn1search18</td>
+<td>中</td>
+<td>12–15 小时</td>
+</tr>
+<tr>
+<td>Qwen-VL 深潜与工程</td>
+<td>Qwen-VL 系列如何把分辨率、视频、文档、grounding 做成工程系统</td>
+<td>P0：urlQwen-VL 论文turn3search0 → urlQwen2-VL 论文turn3search5 → urlQwen2.5-VL 报告turn1search1；P1：urlQwen 中文文档turn4search2；P1：urlVLMEvalKitturn5search2；P1：urlLLaMA-Factory 文档turn6search0 / urlms-swift 文档turn5search4</td>
+<td>中偏上到高</td>
+<td>30–36 小时</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>资源次序上，建议遵守三个原则。第一，<strong>同一主题永远先看论文摘要、Figure 1、Method 和官方文档，再决定是否读实现</strong>；第二，<strong>中文网页书只做“压缩理解”和“复盘固化”，不要拿中文二手解读替代原始论文</strong>；第三，<strong>Qwen 主线一定要“论文/报告 + 博客 + 文档 + 模型卡”四件套配套读</strong>，因为它们分别覆盖动机、能力边界、API 用法与实践约束。citeturn8view0turn8view5turn9view5turn8view6turn12view1</p>
+<h2 id="十二周路线图"><a href="#十二周路线图" class="headerlink" title="十二周路线图"></a>十二周路线图</h2><p>这张表是整份报告的执行核心。每一周都按“核心问题—阅读顺序—要画的图—最小代码实验—3060 轻量替代—产出物—验收标准”来安排；如果一周超载，优先保住“图 + 小脚本 + 笔记”，不要牺牲产出物去换更多的阅读页数。citeturn12view6turn12view7turn12view1turn8view6</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>周次</th>
+<th>本周核心问题</th>
+<th>阅读顺序</th>
+<th>必读资源</th>
+<th>要画的图/表</th>
+<th>代码实验与命令示例</th>
+<th>3060 轻量替代</th>
+<th>本周产出物</th>
+<th>学会标准</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Week 1</td>
+<td>Transformer 为什么能处理 patch 序列</td>
+<td>CS231n Transformer 讲义 → ViT 论文摘要/Fig1 → ViT 文档</td>
+<td>urlLecture 8turn18search0；urlViT 论文turn0search0；urlViT 文档turn24search1</td>
+<td>QKV 流程图；224/16→196 patch 计算表</td>
+<td><code>python week1_patchify_demo.py --img demo.jpg --patch 16</code></td>
+<td>只做 patchify/unpatchify，不训模型</td>
+<td>一篇《为什么图像可以分块》；一张 patchify 图；一个 patchify 脚本</td>
+<td>能手算 patch 数；能解释 position embedding 为什么必须</td>
+</tr>
+<tr>
+<td>Week 2</td>
+<td>ViT 里 CLS token、patch embedding、位置插值分别做什么</td>
+<td>ViT Method → ViT 文档 → 官方代码浏览</td>
+<td>urlViT 论文turn0search0；urlViT 文档turn24search1；urlvision_transformer 仓库turn20search2</td>
+<td>ViT 前向流程图；CLS vs GAP 对比表</td>
+<td><code>python week2_vit_infer.py --model google/vit-base-patch16-224 --image samples/*.jpg</code></td>
+<td>只跑预训练 ViT 前向，不训练</td>
+<td>一篇《ViT 架构精读》；5 张图像分类 demo；结果表</td>
+<td>能讲清“patchify→embedding→encoder→CLS”整链路</td>
+</tr>
+<tr>
+<td>Week 3</td>
+<td>扩散模型为什么需要 timestep，DiT 为什么在 latent 上 patchify</td>
+<td>Diffusion Course Unit 1 → DiT 论文 → CS231n DiT 讲义</td>
+<td>urlDiffusion Models Courseturn11search10；urlDiT 论文turn0search1；urlLecture 14turn18search7</td>
+<td>forward/reverse diffusion 图；DiT latent patchify 图</td>
+<td><code>python week3_forward_diffusion.py --img demo.jpg --steps 20</code></td>
+<td>只做加噪可视化，不跑整套生成</td>
+<td>一篇《DiT 为什么把 U-Net 换成 Transformer》；噪声序列图</td>
+<td>能解释 latent patch 和 image patch 的区别</td>
+</tr>
+<tr>
+<td>Week 4</td>
+<td>CLIP 如何做图文对齐</td>
+<td>CLIP 教程 → CLIP 论文 → 官方代码</td>
+<td>urlCLIP and Relativesturn11search1；urlCLIP 论文turn0search2；urlCLIP 仓库turn20search1</td>
+<td>相似度矩阵；正负样本对比示意图</td>
+<td><code>python week4_clip_zero_shot.py --image site1.jpg --labels helmet,person,crane,sign</code></td>
+<td>用 <code>openai/clip-vit-base-patch32</code> 做 zero-shot</td>
+<td>一篇《CLIP 如何实现图文对齐》；零样本分类表</td>
+<td>能解释 contrastive loss 和 zero-shot 的关系</td>
+</tr>
+<tr>
+<td>Week 5</td>
+<td>BLIP-2 如何把冻结视觉编码器接到冻结 LLM</td>
+<td>BLIP-2 论文 → BLIP-2 文档 → LAVIS</td>
+<td>urlBLIP-2 论文turn0search3；urlBLIP-2 文档turn24search0；urlLAVIS 仓库turn20search0</td>
+<td>Q-Former 数据流；stage 1 / stage 2 训练表</td>
+<td><code>python week5_qformer_toy.py</code>；若有余力：<code>python week5_blip2_caption.py --image doc.png</code></td>
+<td>若 BLIP-2 太重，只做 toy Q-Former + 读代码</td>
+<td>一篇《Q-Former 是什么》；Q-Former 图；可运行 toy attention 脚本</td>
+<td>能说清 BLIP-2 与 CLIP / LLaVA 的结构差别</td>
+</tr>
+<tr>
+<td>Week 6</td>
+<td>LLaVA 为什么是“视觉版 instruction tuning”</td>
+<td>LLaVA 论文 → 项目页 → 仓库/文档</td>
+<td>urlLLaVA 论文turn1search0；urlLLaVA 项目页turn21search2；urlLLaVA 仓库turn21search0</td>
+<td>projector vs Q-Former 比较图；训练数据来源表</td>
+<td><code>python week6_llava_chat.py --model llava-hf/llava-onevision-qwen2-0.5b-ov-hf --image samples/scene.jpg</code></td>
+<td>0.5B LLaVA-OneVision；或者 SmolVLM</td>
+<td>一篇《LLaVA 如何把视觉指令微调做起来》；一次本地对话 demo</td>
+<td>能用自己的话解释 visual instruction tuning</td>
+</tr>
+<tr>
+<td>Week 7</td>
+<td>Qwen-VL 到 Qwen2-VL 到底进化了什么</td>
+<td>Qwen-VL 论文/仓库 → Qwen2-VL 论文/博客/文档</td>
+<td>urlQwen-VL 论文turn3search0；urlQwen-VL 仓库turn2search1；urlQwen2-VL 论文turn3search5；urlQwen2-VL 博客turn13search2；urlQwen2-VL 文档turn13search0</td>
+<td>Qwen-VL / Qwen2-VL 演进表；固定分辨率 vs 动态分辨率对比图</td>
+<td><code>python week7_qwen2vl_demo.py --model Qwen/Qwen2-VL-2B-Instruct --image samples/frame.jpg</code></td>
+<td>先跑 Qwen2-VL-2B；只测试单图和 8–16 帧短视频</td>
+<td>一篇《Qwen-VL 系列演进》；一张演进时间线</td>
+<td>能解释 Qwen2-VL 的 dynamic resolution 与 M-RoPE</td>
+</tr>
+<tr>
+<td>Week 8</td>
+<td>Qwen2.5-VL 为什么是当前必读主线</td>
+<td>技术报告 → 官方博客 → Transformers 文档</td>
+<td>urlQwen2.5-VL 报告turn1search1；urlQwen2.5-VL Blogturn2search0；urlQwen2.5-VL 文档turn2search2</td>
+<td>dynamic resolution + window attention 图；能力矩阵（OCR/grounding/doc/video）</td>
+<td><code>python week8_qwen25vl_eval.py --model Qwen/Qwen2.5-VL-3B-Instruct --images data/mix/*.jpg</code></td>
+<td>优先 3B；若慢则单图批量减少到 10 张</td>
+<td>一篇《Qwen2.5-VL 技术报告精读》；一套提示词模板</td>
+<td>能解释 window attention、MRoPE、grounding 与文档能力</td>
+</tr>
+<tr>
+<td>Week 9</td>
+<td>怎样把 Qwen2.5-VL 用成“研究工具”，而不是只会问答</td>
+<td>Qwen 中文文档 → Qwen2.5-VL 模型卡/文档 → Smol VLM 单元</td>
+<td>urlQwen 中文文档turn4search2；urlQwen 快速开始turn6search3；urlQwen2.5-VL-3B 模型卡turn10search1；urlSmol Course VLM Unitturn11search4</td>
+<td>prompt 模板表；失败案例 taxonomy 表</td>
+<td><code>python week9_compare_vlms.py --models qwen2vl2b,qwen25vl3b,smolvlm2 --images data/mix/*.jpg</code></td>
+<td>样本缩到 20 张；只做 caption/OCR/grounding 三任务</td>
+<td>一篇《多模态提示词模板与误差分析》；一个比较 CSV</td>
+<td>能总结模型在哪些图像类型上最容易失败</td>
+</tr>
+<tr>
+<td>Week 10</td>
+<td>LoRA / SFT 如何进入多模态</td>
+<td>LoRA 论文 → PEFT 文档 → LLaMA-Factory / ms-swift → HF consumer-GPU recipe</td>
+<td>urlLoRA 论文turn22search0；urlPEFT LoRA 文档turn22search1；urlLLaMA-Factory 文档turn6search0；urlms-swift 文档turn5search4；urlSmolVLM consumer GPU recipeturn15search1</td>
+<td>冻结权重 + adapter 图；数据格式模板图</td>
+<td><code>accelerate launch week10_smolvlm_sft.py --model HuggingFaceTB/SmolVLM-256M-Instruct --dataset data/mini_vqa.jsonl</code></td>
+<td>用 SmolVLM-256M/2.2B 做 50–200 样本 SFT；不碰 7B</td>
+<td>一篇《多模态 LoRA 实战记录》；一个数据集 JSONL；训练日志</td>
+<td>能解释为什么要从 consumer-GPU recipe 起步，而不是直接 Qwen2-VL-7B</td>
+</tr>
+<tr>
+<td>Week 11</td>
+<td>如何评估，而不是只看 demo 效果</td>
+<td>VLMEvalKit → OpenCompass → 数据集页面</td>
+<td>urlVLMEvalKitturn5search2；urlOpenCompassturn22search2；urlChartQA 数据集turn23search0；urlDocVQA 数据集turn23search2；urlCOCO 数据集turn23search1</td>
+<td>benchmark 选择树；错误类型饼图/条形图</td>
+<td><code>python week11_manual_eval.py --pred preds.jsonl --gold gold.jsonl</code> 或 <code>vlmeval ...</code></td>
+<td>若 toolkit 太重，就抽 50 样本做人工/半自动评测</td>
+<td>一篇《多模态评测与错例分析》；一个误差分析表</td>
+<td>能清楚回答“模型好在哪里、差在哪里、为什么差”</td>
+</tr>
+<tr>
+<td>Week 12</td>
+<td>形成一个真正像项目的交付</td>
+<td>回看项目相关文档 → 补缺口 → 写总索引</td>
+<td>依项目而定，至少回看 urlQwen2.5-VL 报告turn1search1、urlQwen 中文文档turn4search2、urlVLMEvalKitturn5search2</td>
+<td>系统总架构图；结果对比总表； roadmap 索引图</td>
+<td><code>python week12_project_run.py --config configs/project.yaml</code></td>
+<td>静态报告也算完成，但必须有可复现实验入口</td>
+<td>一个完整小项目；Hexo 索引页；README；3 分钟讲解稿</td>
+<td>能把 12 周内容串成一个连贯叙事，并展示最小可复现结果</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>命令里的脚本名，建议你就在一个单独仓库里照这个命名方式创建。这样做的好处不是“更规范”，而是让你每周都留下一条可重复运行的最小入口，半年后回头看不会只有一堆截图和散落的 notebook。citeturn12view3turn12view1turn8view7</p>
+<h3 id="3060-生存策略"><a href="#3060-生存策略" class="headerlink" title="3060 生存策略"></a>3060 生存策略</h3><p>本地实践要分层做：把“概念验证”“主线推理”“轻量微调”拆开。官方资料已经给了很清楚的信号：urlQwen2-VL-7B TRL recipeturn15search2 直接说明它需要 A100；而 urlSmolVLM-256M-Instructturn19search2 可以单图在 1GB 以下显存运行，urlSmolVLM2-2.2B-Instructturn19search1 则把视频推理压到约 5.2GB GPU RAM。Qwen 主线的最小实践组合，通常应从 urlQwen2-VL-2B-Instructturn10search0 和 urlQwen2.5-VL-3B-Instructturn10search1 起步，再配合 4-bit/8-bit 量化。citeturn15search2turn19search2turn19search1turn10search0turn10search1turn6search18turn6search10</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>优先模型/工具</th>
+<th>为什么适合</th>
+<th>不要做什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>概念验证</td>
+<td>urlSmolVLM-256M-Instructturn19search2</td>
+<td>单图推理显存极低，适合每周 sanity check</td>
+<td>不要拿它当最终性能代表</td>
+</tr>
+<tr>
+<td>轻量多图/短视频</td>
+<td>urlSmolVLM2-2.2B-Instructturn19search1</td>
+<td>官方模型卡给出较低显存占用，适合 consumer GPU</td>
+<td>不要在它上面过度追 benchmark</td>
+</tr>
+<tr>
+<td>Qwen 主线路径</td>
+<td>urlQwen2-VL-2B-Instructturn10search0；urlQwen2.5-VL-3B-Instructturn10search1</td>
+<td>保持 Qwen 语义风格和接口习惯，便于读报告后立即实践</td>
+<td>不要一开始就碰 7B/72B</td>
+</tr>
+<tr>
+<td>量化</td>
+<td>urlTransformers Quantization 文档turn6search18；urlbitsandbytes 文档turn6search10</td>
+<td>4-bit / 8-bit 是消费级 GPU 最现实的入口</td>
+<td>不要把量化误当成“训练免费”</td>
+</tr>
+<tr>
+<td>12GB 显存变体可尝试</td>
+<td>urlQwen-VL-Chat-Int4 线索turn9view4；urlLLaVA 仓库turn21search0</td>
+<td>Qwen 仓库给出 12G GPU 的 Int4 demo 线索，LLaVA 仓库也提到 13B 4-bit 可在 12GB 跑</td>
+<td>不要默认 6GB/8GB 也能稳跑</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>如果你恰好是 12GB 版 3060，而不是常见的更小显存笔记本版本，那么可以试探性尝试更大的 4-bit 模型；但如果是 6GB–8GB 的典型移动端环境，主线依旧应该是“SmolVLM 做微调、Qwen2-VL-2B/Qwen2.5-VL-3B 做推理、7B 只做阅读和远程实验”。citeturn9view4turn21search0turn15search2</p>
+<p>下面这组环境命令，足够覆盖你 12 周中的大多数本地实验；重点是统一环境，而不是不断重建虚拟环境。相关模型接口和量化能力都来自官方的 urlTransformers 文档turn24search7、urlQwen2.5-VL 文档turn2search2、urlPEFT 文档turn22search4 和 urlbitsandbytes 文档turn6search10。citeturn24search7turn8view6turn22search4turn6search10</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">conda create -n mllm python=3.10 -y</span><br><span class="line">conda activate mllm</span><br><span class="line"></span><br><span class="line">pip install torch torchvision torchaudio</span><br><span class="line">pip install transformers datasets accelerate peft bitsandbytes timm pillow matplotlib jupyter</span><br><span class="line">pip install qwen-vl-utils</span><br></pre></td></tr></table></figure>
+<h2 id="小项目"><a href="#小项目" class="headerlink" title="小项目"></a>小项目</h2><p>真正能把路线收束成“会做事”的，往往不是又读了多少篇论文，而是有没有把某个问题做成一个像样的、小而完整的项目。下面三个项目分别覆盖“基础机制验证”“Qwen2.5-VL 能力理解”和“结合你已有工程资产”的三种路径；其中第三个专门围绕你已有的 SLAM / 3DGS / 工地图像数据来设计。公开数据集的来源可以优先用 urlCOCOturn23search1、urlChartQAturn23search0 和 urlDocVQAturn23search2，评测可以先从 urlVLMEvalKitturn5search2 或轻量人工评估开始。citeturn23search1turn23search0turn23search2turn8view7</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核心步骤</th>
+<th>所需数据</th>
+<th>指标</th>
+<th>难度</th>
+<th>资源需求</th>
+<th>学习收益</th>
+<th>预期产出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Patchify 与图文对齐实验</td>
+<td>先自己实现 patchify/unpatchify；再用 CLIP 做零样本分类或 image-text retrieval；最后把相似度矩阵和失败样本写出来</td>
+<td>自己拍的 50–200 张图片，或 urlCOCOturn23search1 子集</td>
+<td>Top-1 准确率、Recall@K、错误样本分析</td>
+<td>低</td>
+<td>CPU + 单卡即可</td>
+<td>直接把 ViT 与 CLIP 两个基础主题打通</td>
+<td>1 篇 Hexo；1 个 notebook；1 张相似度热力图</td>
+</tr>
+<tr>
+<td>文档与图表理解对比实验</td>
+<td>选 50–100 个图表/文档样本；比较 Qwen2-VL-2B、Qwen2.5-VL-3B、SmolVLM2；固定 prompt，记录回答与格式错误</td>
+<td>urlChartQAturn23search0、urlDocVQAturn23search2、自己截的发票/表格/网页截图</td>
+<td>EM、ANLS、JSON 格式正确率、人工准确率</td>
+<td>中</td>
+<td>单卡推理即可，最好量化</td>
+<td>把 Qwen2.5-VL 的 OCR / grounding / structured output 真正用起来</td>
+<td>1 个对比表；1 篇误差分析；1 组 prompt 模板</td>
+</tr>
+<tr>
+<td>SLAM / 3DGS / 工地图像语义实验</td>
+<td>抽帧或选关键帧；用 VLM 做场景描述、人物/车辆/危险区域识别、标识牌 OCR；把输出映射回帧或位姿；和人工标注或已有 mask 对比</td>
+<td>你自己的工地图像、SLAM 关键帧、3DGS 数据、可选的已有人物/建筑 mask</td>
+<td>目标检测/动态物体 F1，OCR 准确率，人工 usefulness 评分，坏帧过滤 Precision/Recall</td>
+<td>中偏高</td>
+<td>单卡推理 + 少量人工标注</td>
+<td>最有个人辨识度，能把多模态学习和既有研究方向真正接起来</td>
+<td>一个简历项目；可视化叠加图；CSV 结果表；项目 README</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>如果你只做一个项目，我最推荐第三个。因为它既不要求你从零搭一个“标准 benchmark 论文复现”，也不只是做“别人也能做的通用 demo”；它会把你已有的场景理解、3DGS、SLAM 背景变成多模态项目里的资产。你可以把项目问题定义为：<strong>VLM 是否能辅助 SLAM / 3DGS 中的动态物体过滤与语义说明？</strong> 这个题目天然会用到 caption、OCR、grounding、错误分析，也天然适合写成连续的 Hexo 系列。citeturn3search1turn9view5turn8view7</p>
+<p>第三个项目可以按下面的收敛路径来做。先从 30–100 张关键帧开始，而不是一上来把整个数据集都扔进去；对每一帧固定三类 prompt：场景描述、动态对象检测、文本/OCR 读取。然后把输出保存成 JSON，再做两层对比：一层是和人工标签对比，另一层是和你已有的 mask / 位姿 / 重建质量问题对比。最后给出一个很务实的问题：<strong>如果把被 VLM 判断为“人多/遮挡重/文本噪声强”的帧过滤掉，重建质量有没有变好？</strong> 即使最后答案是否定的，这也是一个完整而有价值的实验。citeturn9view5turn8view6turn5search2</p>
+<h2 id="Hexo-模板与周产出评估"><a href="#Hexo-模板与周产出评估" class="headerlink" title="Hexo 模板与周产出评估"></a>Hexo 模板与周产出评估</h2><p>Hexo 系列最怕的不是“写得慢”，而是每篇结构都不一样，三周后自己都找不到重点。下面这个模板适合你全程复用，既能写论文精读，也能写实验记录；真正需要保证的是：<strong>每篇都有一句话结论、一张自己重画的图、一段可运行代码、一个失败案例</strong>。这四项比“写长文”更重要。citeturn12view6turn8view6turn8view7</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 多模态基础XX：这里写主题</span><br><span class="line">date: 2026-05-08</span><br><span class="line">tags:</span><br><span class="line"><span class="bullet">  -</span> multimodal</span><br><span class="line"><span class="bullet">  -</span> vit</span><br><span class="line"><span class="bullet">  -</span> dit</span><br><span class="line"><span class="bullet">  -</span> clip</span><br><span class="line"><span class="bullet">  -</span> qwen-vl</span><br><span class="line">categories:</span><br><span class="line"><span class="bullet">  -</span> multimodal-roadmap</span><br><span class="line"><span class="section">description: 一句话说明这篇笔记解决什么问题</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 一句话结论</span></span><br><span class="line">用 3-5 句话写清楚这篇文章最核心的结论。</span><br><span class="line"></span><br><span class="line"><span class="section">## 这篇要解决的问题</span></span><br><span class="line"><span class="bullet">-</span> 问题一</span><br><span class="line"><span class="bullet">-</span> 问题二</span><br><span class="line"><span class="bullet">-</span> 问题三</span><br><span class="line"></span><br><span class="line"><span class="section">## 核心图重绘</span></span><br><span class="line">放你自己画的图，不要只贴论文原图。</span><br><span class="line"></span><br><span class="line"><span class="section">## 关键概念</span></span><br><span class="line"><span class="bullet">-</span> 概念 A</span><br><span class="line"><span class="bullet">-</span> 概念 B</span><br><span class="line"><span class="bullet">-</span> 概念 C</span><br><span class="line"></span><br><span class="line"><span class="section">## 关键公式或伪代码</span></span><br><span class="line">写你真正理解后的版本；不求全，但求解释清楚。</span><br><span class="line"></span><br><span class="line"><span class="section">## 最小实验</span></span><br><span class="line"><span class="section">### 环境</span></span><br><span class="line"><span class="section">### 数据</span></span><br><span class="line"><span class="section">### 代码</span></span><br><span class="line"><span class="section">### 输出结果</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 失败案例与坑点</span></span><br><span class="line"><span class="bullet">-</span> 失败一：为什么失败</span><br><span class="line"><span class="bullet">-</span> 失败二：为什么失败</span><br><span class="line"></span><br><span class="line"><span class="section">## 与 Qwen-VL 的关系</span></span><br><span class="line">这一节强制把当前主题和 Qwen-VL / Qwen2-VL / Qwen2.5-VL 接起来。</span><br><span class="line"></span><br><span class="line"><span class="section">## 我现在还不懂什么</span></span><br><span class="line">列 2-3 个你还没想透的问题，作为下一篇的入口。</span><br></pre></td></tr></table></figure>
+<p>建议你的 Hexo 目录一开始就固定下来，这样每周不会纠结“到底写哪一篇”。一个比较顺手的目录是下面这样：本质上是把路线图变成文章目录。citeturn8view0turn8view1turn0search2turn9view1turn8view4turn3search1</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">source/_posts/</span><br><span class="line">├── 00-roadmap.md</span><br><span class="line">├── 01-why-patchify.md</span><br><span class="line">├── 02-vit.md</span><br><span class="line">├── 03-dit.md</span><br><span class="line">├── 04-clip.md</span><br><span class="line">├── 05-blip2.md</span><br><span class="line">├── 06-llava.md</span><br><span class="line">├── 07-qwen-vl.md</span><br><span class="line">├── 08-qwen2-vl.md</span><br><span class="line">├── 09-qwen2.5-vl.md</span><br><span class="line">├── 10-local-inference.md</span><br><span class="line">├── 11-light-finetune.md</span><br><span class="line">├── 12-evaluation.md</span><br><span class="line">└── 13-project.md</span><br></pre></td></tr></table></figure>
+<p>不同主题的笔记，图表和代码片段也应该有固定套路。这样你不会每篇都从零构思，也更容易形成自己的风格。下面这张表可以直接当写作 checklist。citeturn24search1turn24search8turn11search16turn24search0turn21search4turn13search14</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>笔记主题</th>
+<th>必画图表</th>
+<th>必放代码片段</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ViT</td>
+<td>patchify 流程；CLS token 路径；patch 数量计算表</td>
+<td><code>torch.nn.Unfold</code> 或手写 patchify/unpatchify</td>
+</tr>
+<tr>
+<td>DiT</td>
+<td>图像→VAE latent→latent patches；噪声日程图；timestep conditioning</td>
+<td>forward diffusion <code>q_sample</code> 小脚本；噪声可视化</td>
+</tr>
+<tr>
+<td>CLIP</td>
+<td>image encoder / text encoder / similarity matrix；contrastive loss</td>
+<td>零样本分类或 retrieval 的 cosine similarity 脚本</td>
+</tr>
+<tr>
+<td>BLIP-2</td>
+<td>frozen image encoder + Q-Former + frozen LLM；两阶段训练表</td>
+<td>Query token 的 shape 打印；最小 caption demo</td>
+</tr>
+<tr>
+<td>LLaVA</td>
+<td>vision encoder → projector → LLM；instruction tuning 数据流</td>
+<td>多轮 image-text prompt 模板</td>
+</tr>
+<tr>
+<td>Qwen2.5-VL</td>
+<td>dynamic resolution；window attention；grounding/OCR/video 能力矩阵</td>
+<td>单图/多图/视频 message 模板；结构化 JSON 输出</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>每周产出建议固定为五项：<strong>一篇笔记、一张自己重画的图、一个可运行脚本、一个结果表、一个失败案例列表</strong>。如果时间紧，就先保住这五项的“最小可交付版本”，而不是追求把每篇都写成综述。citeturn12view6turn12view7turn8view7</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>产出项</th>
+<th>最低标准</th>
+<th>达标信号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>笔记</td>
+<td>800–1500 字，能回答一个明确问题</td>
+<td>读完后你能在 5 分钟内口头复述</td>
+</tr>
+<tr>
+<td>图</td>
+<td>至少 1 张自己重画的架构图/流程图</td>
+<td>不看原文也能解释每个模块</td>
+</tr>
+<tr>
+<td>代码</td>
+<td>1 个单文件脚本可直接运行</td>
+<td>运行入口稳定，三周后还能复现</td>
+</tr>
+<tr>
+<td>结果表</td>
+<td>至少 1 张 CSV/Markdown 表</td>
+<td>能比较不同 prompt / 模型 / 参数</td>
+</tr>
+<tr>
+<td>失败案例</td>
+<td>至少 2 个真实错误样本</td>
+<td>能写出“为什么错”和“怎么改”</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>判断“学会了”的标准，不该是“我看完了”，而应是四个可操作问题。第一，你能不能把 Figure 1 用自己的图重画出来。第二，你能不能说明一个模型相对前一个模型到底解决了什么。第三，你能不能跑一个最小实验并得到可解释的结果。第四，你能不能指出它在哪些场景会失败。只要这四个问题都能答出来，你对这一周主题大体就是“真的学会了”。citeturn8view0turn8view1turn9view1turn8view4turn3search1turn8view7</p>
+<h2 id="持续跟踪计划"><a href="#持续跟踪计划" class="headerlink" title="持续跟踪计划"></a>持续跟踪计划</h2><p>12 周结束以后，最好的续航方式不是“再开一条新路线”，而是建立一个很轻的更新节奏：<strong>每周看新东西、每月复盘旧东西、每季度重跑一次基准或项目</strong>。官方更新源要优先盯住 urlQwen 官方博客turn13search7、urlHugging Face Learnturn11search15、urlCS231n 日程/讲义turn1search15、urlLLaMA-Factory 文档turn6search0、urlms-swift 文档turn5search4 和 urlVLMEvalKit 仓库turn5search2。这些源比社交媒体更慢一些，但噪声也更低。citeturn13search7turn11search15turn1search15turn12view3turn12view2turn8view7</p>
+<p>关于 RSS，官方的 urlarXiv RSS 说明页turn25search1 明确说明所有活跃学科都有 RSS/ATOM feed；对你的路线最重要的是 urlarXiv cs.CV recent 页面turn25search0、urlarXiv cs.CL recent 页面turn25search2 和 urlarXiv cs.AI recent 页面turn25search3。如果你用 Feedly、NetNewsWire 之类的阅读器，就把这三类作为研究信号源；如果你用 X/Twitter，也只把它当成“发现入口”，不要把任何结论停留在时间线上，一律回到论文页、博客页或官方仓库核验。citeturn25search1turn25search0turn25search2turn25search3</p>
+<p>建议的维护节奏如下。这样做的目的，是把你以后接触到的新模型、新报告，都自动映射回这 12 周里已经建立起来的框架。citeturn13search7turn11search15turn25search0turn25search2turn25search3turn5search2turn22search2</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>节奏</th>
+<th>具体动作</th>
+<th>推荐订阅源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>每周</td>
+<td>看 3–5 篇摘要；精选 1 篇精读；更新 1 条 Hexo 周报</td>
+<td>urlQwen 官方博客turn13search7；urlarXiv cs.CVturn25search0；urlarXiv cs.CLturn25search2；urlarXiv cs.AIturn25search3</td>
+</tr>
+<tr>
+<td>每两周</td>
+<td>选一个小模型重跑一次固定样本集</td>
+<td>urlQwen2.5-VL 文档turn2search2；urlSmol Course VLM Unitturn11search4</td>
+</tr>
+<tr>
+<td>每月</td>
+<td>复盘 1 个项目或 1 个 benchmark；更新对比表和失败案例库</td>
+<td>urlVLMEvalKitturn5search2；urlOpenCompassturn22search2</td>
+</tr>
+<tr>
+<td>每季度</td>
+<td>精读 1 份技术报告并补 1 篇体系化长文</td>
+<td>urlQwen2.5-VL 报告turn1search1；urlQwen2-VL 论文turn3search5；urlCS231n 多模态讲义turn18search8</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>如果你想把这套更新机制做得非常轻，可以只坚持两个动作：<strong>每周末写一篇 500–800 字的“本周一个模型/一篇论文/一个坑”短记；每月最后一个周末更新一次自己的模型对比表</strong>。这样一年后，你手里会自然形成一份属于自己的多模态知识底座，而不是零散收藏夹。citeturn13search7turn11search15turn8view7</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">Edneg2031</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2026/05/09/roadmap/">http://example.com/2026/05/09/roadmap/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/05/08/%E5%A4%9A%E6%A8%A1%E6%80%81%E5%9F%BA%E7%A1%8001%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9B%BE%E5%83%8F%E5%8F%AF%E4%BB%A5%E5%88%86%E5%9D%97/" title="多模态基础01：为什么图像可以分块"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">多模态基础01：为什么图像可以分块</div></div><div class="info-2"><div class="info-item-1">为什么图像可以分块：从 ViT 到 DiT1 问题背景Transformer 原本处理的是文本 token，比如： 我 / 喜欢 / 学习 / 多模态 但是图像本身不是一串离散 token，而是一个二维像素矩阵： H × W × C所以问题是：图像能不能也变成一串 token？ViT 和 DiT 都给出了类似的回答：把图像切成 patch，每个 patch 当作一个 token。 \mathbf{[Batch, H, W, C]}  转换成  \mathbf{[Batch, Num\_tokens, Embedding\_size]}2 ViT 输入图像: $H × W × C$ （$224 \times 224 \times 3$） 切patch块，每块的形状为：$P × P × C$ ($ 16 \times 16 \times 3$)，可以切成 $patch_size\times patch_size(14 \times 14=196)$个 patch 块， 把 patch 块通过 Linear Projection 映射成 token embedding $(patch_...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Edneg2031</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E6%A8%A1%E6%80%81%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0-Roadmap"><span class="toc-number">1.</span> <span class="toc-text">多模态大模型学习 Roadmap</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Executive-Summary"><span class="toc-number">1.1.</span> <span class="toc-text">Executive Summary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%BA%BF%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="toc-number">1.2.</span> <span class="toc-text">路线设计原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E8%B5%84%E6%BA%90%E6%80%BB%E8%A1%A8"><span class="toc-number">1.3.</span> <span class="toc-text">关键资源总表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B6%E6%AE%B5%E8%B5%84%E6%BA%90%E4%B8%8E%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-number">1.4.</span> <span class="toc-text">阶段资源与优先级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C%E5%91%A8%E8%B7%AF%E7%BA%BF%E5%9B%BE"><span class="toc-number">1.5.</span> <span class="toc-text">十二周路线图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3060-%E7%94%9F%E5%AD%98%E7%AD%96%E7%95%A5"><span class="toc-number">1.5.1.</span> <span class="toc-text">3060 生存策略</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.6.</span> <span class="toc-text">小项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo-%E6%A8%A1%E6%9D%BF%E4%B8%8E%E5%91%A8%E4%BA%A7%E5%87%BA%E8%AF%84%E4%BC%B0"><span class="toc-number">1.7.</span> <span class="toc-text">Hexo 模板与周产出评估</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%81%E7%BB%AD%E8%B7%9F%E8%B8%AA%E8%AE%A1%E5%88%92"><span class="toc-number">1.8.</span> <span class="toc-text">持续跟踪计划</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/09/roadmap/" title="roadmap">roadmap</a><time datetime="2026-05-09T08:08:38.000Z" title="Created 2026-05-09 16:08:38">2026-05-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/08/%E5%A4%9A%E6%A8%A1%E6%80%81%E5%9F%BA%E7%A1%8001%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9B%BE%E5%83%8F%E5%8F%AF%E4%BB%A5%E5%88%86%E5%9D%97/" title="多模态基础01：为什么图像可以分块">多模态基础01：为什么图像可以分块</a><time datetime="2026-05-08T05:42:33.000Z" title="Created 2026-05-08 13:42:33">2026-05-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/05/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="hexo搭建个人博客">hexo搭建个人博客</a><time datetime="2026-05-05T06:34:34.000Z" title="Created 2026-05-05 14:34:34">2026-05-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/05/hello-world/" title="Hello World">Hello World</a><time datetime="2026-05-05T06:26:37.452Z" title="Created 2026-05-05 14:26:37">2026-05-05</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Edneg2031</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.0/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
